@@ -51,7 +51,8 @@ public class WeaponController : MonoBehaviour
                 //stworz pocisk
                 GameObject projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
 
-                
+                transform.GetComponent<AudioSource>().Play();
+
                 //znajdz rrigidbody dla pocisku
                 Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
                 //"popchnij" pocisk do przodu
@@ -64,11 +65,9 @@ public class WeaponController : MonoBehaviour
                 //zniszcz pocisk po 5 sekundach
                 Destroy(projectile, 5);
             }
-            else
-            {
-                timeSinceLastFire += Time.deltaTime;
-            }
+
         }
+        timeSinceLastFire += Time.deltaTime;
 
     }
     Transform TagTargeter(string tag)
